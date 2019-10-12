@@ -1,8 +1,19 @@
 package com.coding.codewars;
 
+import java.util.stream.Collectors;
+import java.util.stream.LongStream;
+
 public class BackWardsPrime {
 
     public static String backwardsPrime(long start, long end) {
+        return LongStream.range(start, end + 1).parallel()
+            .filter(x -> !isPalidrome(x))
+            .filter(BackWardsPrime::isPrime)
+            .filter(x -> isPrime(backwards(x)))
+            .boxed().map(String::valueOf).collect(Collectors.joining(" "));
+    }
+
+    public static String backwardsPrime2(long start, long end) {
         StringBuilder sb = new StringBuilder();
         while (start <= end) {
             long rev = Long.parseLong(new StringBuilder(
@@ -21,5 +32,13 @@ public class BackWardsPrime {
                 return false;
         }
         return true;
+    }
+
+    private static long backwards(long number) {
+        return Long.parseLong(new StringBuffer(String.valueOf(number)).reverse().toString());
+    }
+
+    private static boolean isPalidrome(long number) {
+        return number == backwards(number);
     }
 }
