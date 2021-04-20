@@ -9,14 +9,9 @@ public class StringIntwUtil {
         return reverseString(str.substring(1)) + str.charAt(0);
     }
 
-    public static void recursionFucn() {
-        System.out.println("Привет, JavaRush!");
-        recursionFucn();
-    }
 
     public static void main(String[] args) {
         String someStr = "Hello world";
         System.out.println(reverseString(someStr));
-        recursionFucn();
     }
 }

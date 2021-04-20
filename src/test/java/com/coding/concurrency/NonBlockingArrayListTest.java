@@ -1,5 +1,7 @@
 package com.coding.concurrency;
 
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,6 +20,7 @@ public class NonBlockingArrayListTest {
         list.remove(1);
         Assert.assertEquals(2, list.size());
         Assert.assertEquals("item3", list.get(1));
+
 
     }
 }
